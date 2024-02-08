@@ -6,15 +6,17 @@ def test_simple_work():
     assert simple_work_calc(10, 2, 2) == 36
     assert simple_work_calc(20, 3, 2) == 230
     assert simple_work_calc(30, 4, 2) == 650
-    assert simple_work_calc(15, 3, 2) == 90
-    assert simple_work_calc(20,4,8) == 160
+    assert simple_work_calc(40, 5, 2) == 5390
+    assert simple_work_calc(50, 6, 2) == 13592
+    assert simple_work_calc(60, 7, 2) == 27416
     
 def test_work():
     assert work_calc(10, 2, 2,lambda n: 1) == 15
     assert work_calc(20, 1, 2, lambda n: n*n) == 530
-    assert work_calc(30, 3, 2, lambda n: n) == 30
-    assert work_calc(50, 2, 2, lambda n: 2*n) == 300
-    assert work_calc(40, 1, 2, lambda n: n * n) == 400  
+    assert work_calc(30, 3, 2, lambda n: n) == 300
+    assert work_calc(50, 2, 2, lambda n: 2*n) == 520
+    assert work_calc(40, 1, 2, lambda n: n * n) == 2130
+    assert work_calc(60, 3, 2, lambda n: n) == 960
 
 def test_compare_work():
     def work_fn1(n):
@@ -39,7 +41,7 @@ def test_compare_work():
     print(res)
     
 def test_compare_span():
-    def span_functionn1(n):
+    def span_function1(n):
       a = 10
       b = 4
       f = lambda n:1
@@ -49,12 +51,7 @@ def test_compare_span():
       b = 4
       f = lambda n:n
       return span_calc(n,a,b,f)
-    def span_function3(n):
-      a = 10
-      b = 4
-      f = lambda n:n*n
-      return span_calc(n,a,b,f)
-    res = compare_span(span_functionn1,span_function2, span_function3)
+    res = compare_span(span_function1,span_function2)
 
   
 	# TODO

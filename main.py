@@ -8,7 +8,7 @@ import time
 ###
 
 def simple_work_calc(n, a, b):
-  if n == 1:
+  if n <= 1:
     return 1
   else:
     return a*simple_work_calc(n//b, a, b) + n
@@ -23,7 +23,7 @@ def simple_work_calc(n, a, b):
 	"""
 
 def work_calc(n, a, b, f):
-  if n == 1:
+  if n <= 1:
     return 1
   else:
     return a * work_calc(n//b, a, b, f) + f(n)
@@ -43,7 +43,7 @@ def work_calc(n, a, b, f):
     
 
 def span_calc(n, a, b, f):
-  if n == 1:
+  if n <= 1:
     return n
   else:
     return a * span_calc(n//b, a, b, f) + f(n)
@@ -113,5 +113,5 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 			span_fn2
 			))
 	return result
-print(work_calc(10,10,20, simple_work_calc))
+
 
