@@ -19,17 +19,14 @@ def test_work():
     assert work_calc(60, 3, 2, lambda n: n) == 960
 
 def test_compare_work():
-    def work_fn1(n):
-        a = 8
-        b = 2
-        c = 2
-        f = lambda n: n**c
-        return work_calc(n,a,b,f)
-    def work_fn2(n):
-      a = 32
-      b = 2
-      c = 4
-      f = lambda n: n**c
+  def cur_work(a,b,f):
+     return lambda n: work_calc(n,a,b,f)
+  
+  res = compare_work(cur_work(2,2,lambda n: 1), cur_work(2,2,lambda n: n))
+  print_Work_results(res)
+  res = compare_work(cur_work(2,2,lambda n: n), cur_work(2,2,lambda n: n*n))
+  print_Work_results(res)
+  
       
     # curry work_calc to create multiple work
     # functions that can be passed to compare_work
@@ -37,21 +34,15 @@ def test_compare_work():
     # create work_fn1
     # create work_fn2
 
-    res = compare_work(work_fn1, work_fn2)
-    print(res)
     
 def test_compare_span():
-    def span_function1(n):
-      a = 10
-      b = 4
-      f = lambda n:1
-      return span_calc(n,a,b,f)
-    def span_function2(n):
-      a = 10
-      b = 4
-      f = lambda n:n
-      return span_calc(n,a,b,f)
-    res = compare_span(span_function1,span_function2)
+    def cur_span(a,b,f):
+      return lambda n: span_calc(n,a,b,f)
+    res = compare_span(cur_span(2,2,lambda n: 1), cur_span(2,2,lambda n: n))
+    print_Span_results(res)
+    res = compare_span(cur_span(2,2,lambda n: n), cur_span(2,2,lambda n: n*n))
+    print_Span_results(res)
+                       
 
   
 	# TODO

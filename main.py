@@ -8,10 +8,11 @@ import time
 ###
 
 def simple_work_calc(n, a, b):
-  if n <= 1:
+  if n == 1:
     return 1
-  else:
-    return a*simple_work_calc(n//b, a, b) + n
+  elif n == 0:
+   return 0
+  return a * simple_work_calc(n//b, a, b) + n
   """Compute the value of the recurrence $W(n) = aW(n/b) + n
 
 	Params:
@@ -23,10 +24,11 @@ def simple_work_calc(n, a, b):
 	"""
 
 def work_calc(n, a, b, f):
-  if n <= 1:
+  if n == 1:
     return 1
-  else:
-    return a * work_calc(n//b, a, b, f) + f(n)
+  elif n == 0:
+    return 0
+  return a*work_calc(n//b, a, b, f) + f(n)
   """Compute the value of the recurrence $W(n) = aW(n/b) + f(n)
 
 	Params:
@@ -43,10 +45,11 @@ def work_calc(n, a, b, f):
     
 
 def span_calc(n, a, b, f):
-  if n <= 1:
+  if n == 1:
     return n
-  else:
-    return a * span_calc(n//b, a, b, f) + f(n)
+  elif n == 0:
+    return 0
+  return span_calc(n//b,a,b,f) + f(n)
 
   
   """Compute the span associated with the recurrence $W(n) = aW(n/b) + f(n)
@@ -85,12 +88,18 @@ def compare_work(work_fn1, work_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 			))
 	return result
 
-def print_results(results):
+def print_Work_results(results):
 	""" done """
 	print(tabulate.tabulate(results,
 							headers=['n', 'W_1', 'W_2'],
 							floatfmt=".3f",
 							tablefmt="github"))
+def print_Span_results(results):
+  """ done """
+  print(tabulate.tabulate(results,
+              headers=['n', 'S_1', 'S_2'],
+              floatfmt=".3f",
+              tablefmt="github"))
 
 
 
